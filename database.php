@@ -15,7 +15,7 @@ class Database {
 				echo $e->getMessage();
 			}
 		}
-		return $em;
+		return self::$em;
 	}
 
 }
