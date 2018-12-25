@@ -1,7 +1,7 @@
 <?php
 use Doctrine\ORM\EntityRepository;
 
-class Articles extends EntityRepository
+class Categories extends EntityRepository
 {
     private $em;
     
