@@ -34,7 +34,7 @@ class UsersImplement
 
         foreach ($mandatory_fields as $field) {
             if (!isset($data[$field]) || $data[$field] == '') {
-                array_push($result['errors'], array("message" => "Câmpul este obligatoriu!"));
+                array_push($result['errors'], array("message" => "Campul \"".$field."\" este obligatoriu!"));
                 $valid = false;
             }
         }

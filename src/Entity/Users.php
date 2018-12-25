@@ -72,79 +72,192 @@ class Users
 	private $lastLogin;
 
 
-	public function getIdUsers() {
-		return $this->idUsers;
-	}
 
-	public function getUidUsers() {
-		return $this->uidUsers;
-	}
+    /**
+     * @return integer
+     */
+    public function getIdUsers()
+    {
+        return $this->idUsers;
+    }
 
-	public function setUidUsers($uidUsers) {
-		$this->uidUsers = $uidUsers;
-	}
+    /**
+     * @return integer|null
+     */
+    public function getUidUsers()
+    {
+        return $this->uidUsers;
+    }
 
-	public function getName() {
-		return $this->name;
-	}
+    /**
+     * @param integer|null $uidUsers
+     *
+     * @return self
+     */
+    public function setUidUsers($uidUsers)
+    {
+        $this->uidUsers = $uidUsers;
 
-	public function setName($name) {
-		$this->name = $name;
-	}
+        return $this;
+    }
 
-	public function getUsername() {
-		return $this->username;
-	}
+    /**
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
 
-	public function setUsername($username) {
-		$this->username = $username;
-	}
+    /**
+     * @param string $name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
 
-	public function getEmail() {
-		return $this->name;
-	}
+        return $this;
+    }
 
-	public function setEmail($email) {
-		$this->email = $email;
-	}
+    /**
+     * @return string
+     */
+    public function getUsername()
+    {
+        return $this->username;
+    }
 
-	public function getPassword() {
-		return $this->password;
-	}
+    /**
+     * @param string $username
+     *
+     * @return self
+     */
+    public function setUsername($username)
+    {
+        $this->username = $username;
 
-	public function setPassword($password) {
-		$this->password = $password;
-	}
+        return $this;
+    }
 
-	public function getStatus() {
-		return $this->status;
-	}
+    /**
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->email;
+    }
 
-	public function setStatus($status) {
-		$this->status = $status;
-	}
+    /**
+     * @param string $email
+     *
+     * @return self
+     */
+    public function setEmail($email)
+    {
+        $this->email = $email;
 
-	public function getType() {
-		return $this->type;
-	}
+        return $this;
+    }
 
-	public function setType($type) {
-		$this->type = $type;
-	}
+    /**
+     * @return string
+     */
+    public function getPassword()
+    {
+        return $this->password;
+    }
 
-	public function getCreated() {
-		return $this->created;
-	}
+    /**
+     * @param string $password
+     *
+     * @return self
+     */
+    public function setPassword($password)
+    {
+        $this->password = $password;
 
-	public function setCreated($created) {
-		$this->created = $created;
-	}
+        return $this;
+    }
 
-	public function getLastLogin() {
-		return $this->lastLogin;
-	}
+    /**
+     * @return string|null
+     */
+    public function getStatus()
+    {
+        return $this->status;
+    }
 
-	public function setLastLogin($lastLogin) {
-		$this->lastLogin = $lastLogin;
-	}
+    /**
+     * @param string|null $status
+     *
+     * @return self
+     */
+    public function setStatus($status)
+    {
+        $this->status = $status;
+
+        return $this;
+    }
+
+    /**
+     * @return integer|null
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * @param integer|null $type
+     *
+     * @return self
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getCreated()
+    {
+        return $this->created;
+    }
+
+    /**
+     * @param \DateTime|null $created
+     *
+     * @return self
+     */
+    public function setCreated($created)
+    {
+        $this->created = $created;
+
+        return $this;
+    }
+
+    /**
+     * @return \DateTime|null
+     */
+    public function getLastLogin()
+    {
+        return $this->lastLogin;
+    }
+
+    /**
+     * @param \DateTime|null $lastLogin
+     *
+     * @return self
+     */
+    public function setLastLogin($lastLogin)
+    {
+        $this->lastLogin = $lastLogin;
+
+        return $this;
+    }
 }

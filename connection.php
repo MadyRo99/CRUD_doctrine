@@ -7,6 +7,8 @@ spl_autoload_register(function ($name) {
 });
 
 include_once('src/Entity/Users.php');
+include_once('src/Entity/Articles.php');
+include_once('src/Entity/Categories.php');
 
 if (!isset($entityManager)) {
     $entityManager = Database::getConnection();
