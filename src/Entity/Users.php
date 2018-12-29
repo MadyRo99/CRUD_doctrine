@@ -18,8 +18,8 @@ class Users
 	private $idUsers;
 
 	/**
-	 * @ORM\Column (name="uid_users", type="integer", nullable=true, unique=true)
-	 * @var integer|null
+	 * @ORM\Column (name="uid_users", type="integer", nullable=false, unique=true)
+	 * @var integer
 	 */
 	private $uidUsers;
 
@@ -48,26 +48,26 @@ class Users
 	private $password;
 
 	/**
-	 * @ORM\Column (name="status", type="string", length=15, nullable=true, options={"comment"="0-INITIAL; 1-APPROVED"})
-	 * @var string|null
+	 * @ORM\Column (name="status", type="string", length=15, nullable=false, options={"comment"="0-INITIAL; 1-APPROVED"})
+	 * @var string
 	 */
 	private $status = '0';
 
 	/**
-	 * @ORM\Column (name="type", type="integer", nullable=true, options={"comment"="0-USER; 1-ADMINISTRATOR"})
-	 * @var integer|null
+	 * @ORM\Column (name="type", type="integer", nullable=false, options={"comment"="0-USER; 1-ADMINISTRATOR"})
+	 * @var integer
 	 */
 	private $type = '0';
 
 	/**
-	 * @ORM\Column (name="created", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
-	 * @var \DateTime|null
+	 * @ORM\Column (name="created", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+	 * @var \DateTime
 	 */
 	private $created = 'CURRENT_TIMESTAMP';
 	
 	/**
-	 * @ORM\Column (name="last_login", type="datetime", nullable=true)
-	 * @var \DateTime|null
+	 * @ORM\Column (name="last_login", type="datetime", nullable=false)
+	 * @var \DateTime
 	 */
 	private $lastLogin;
 
@@ -82,7 +82,7 @@ class Users
     }
 
     /**
-     * @return integer|null
+     * @return integer
      */
     public function getUidUsers()
     {
@@ -90,7 +90,7 @@ class Users
     }
 
     /**
-     * @param integer|null $uidUsers
+     * @param integer $uidUsers
      *
      * @return self
      */
@@ -182,7 +182,7 @@ class Users
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getStatus()
     {
@@ -190,7 +190,7 @@ class Users
     }
 
     /**
-     * @param string|null $status
+     * @param string $status
      *
      * @return self
      */
@@ -202,7 +202,7 @@ class Users
     }
 
     /**
-     * @return integer|null
+     * @return integer
      */
     public function getType()
     {
@@ -210,7 +210,7 @@ class Users
     }
 
     /**
-     * @param integer|null $type
+     * @param integer $type
      *
      * @return self
      */
@@ -222,7 +222,7 @@ class Users
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -230,7 +230,7 @@ class Users
     }
 
     /**
-     * @param \DateTime|null $created
+     * @param \DateTime $created
      *
      * @return self
      */
@@ -242,7 +242,7 @@ class Users
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getLastLogin()
     {
@@ -250,7 +250,7 @@ class Users
     }
 
     /**
-     * @param \DateTime|null $lastLogin
+     * @param \DateTime $lastLogin
      *
      * @return self
      */

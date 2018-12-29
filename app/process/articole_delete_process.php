@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) header("Location: ../index.php");
+if (!isset($_SESSION['uid'])) header("Location: ../index.php");
 
 require_once ('../../connection.php');
 
@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'GET') {
 
     if ($uid_user_article == null) header("Location: ../index.php");
 
-    if ($uid_user_article == $_SESSION['id']) {
+    if ($uid_user_article == $_SESSION['uid']) {
         $article->deleteArticle($uid_article);
     }
 

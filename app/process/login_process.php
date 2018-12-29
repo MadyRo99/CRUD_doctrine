@@ -1,10 +1,10 @@
 <?php
 session_start();
-if (isset($_SESSION['id'])) header("Location: index.php");
+if (isset($_SESSION['uid'])) header("Location: index.php");
 
 require_once ('../../connection.php');
 
-if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_SESSION['id'])) {
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_SESSION['uid'])) {
 
     if (isset($_POST['usem'])) {
         $data['usem'] = $_POST['usem'];
@@ -14,7 +14,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && !isset($_SESSION['id'])) {
     }
 
     $user = new UsersImplement();
-    $user = $user->Login($data);
+    $user = $user->login($data);
     header("Location: ../index.php?success=".$user);
 
 }

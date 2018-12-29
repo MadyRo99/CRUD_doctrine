@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['id'])) header("Location: index.php");
+if (isset($_SESSION['uid'])) header("Location: index.php");
 
 require_once ('../../connection.php');
 
@@ -20,7 +20,12 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
 
     $user = new UsersImplement();
-    $result = $user->Register($data);
+
+    require_once('uid_generator.php');
+
+    $data['uid_user'] = uid($user);
+
+    $result = $user->register($data);
 
     if ($result['result'] == 'true') {
         header('Location: ../signup.php?success=true');

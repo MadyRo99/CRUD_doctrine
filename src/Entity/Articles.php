@@ -18,8 +18,8 @@ class Articles
 	private $idArticles;
 
 	/**
-	 * @ORM\Column (name="uid_articles", type="integer", nullable=true, unique=true)
-	 * @var integer|null
+	 * @ORM\Column (name="uid_articles", type="integer", nullable=false, unique=true)
+	 * @var integer
 	 */
 	private $uidArticles;
 
@@ -48,20 +48,20 @@ class Articles
 	private $text;
 
 	/**
-	 * @ORM\Column (name="tags", type="string", nullable=true)
-	 * @var string|null
+	 * @ORM\Column (name="tags", type="string", nullable=false)
+	 * @var string
 	 */
 	private $tags;
 
 	/**
-	 * @ORM\Column (name="created", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
-	 * @var \DateTime|null
+	 * @ORM\Column (name="created", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+	 * @var \DateTime
 	 */
 	private $created = 'CURRENT_TIMESTAMP';
 
 	/**
-	 * @ORM\Column (name="modified", type="datetime", nullable=true, options={"default"="CURRENT_TIMESTAMP"})
-	 * @var \DateTime|null
+	 * @ORM\Column (name="modified", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
+	 * @var \DateTime
 	 */
 	private $modified = 'CURRENT_TIMESTAMP';
 
@@ -76,7 +76,7 @@ class Articles
     }
 
     /**
-     * @return integer|null
+     * @return integer
      */
     public function getUidArticles()
     {
@@ -84,7 +84,7 @@ class Articles
     }
 
     /**
-     * @param integer|null $uidArticles
+     * @param integer $uidArticles
      *
      * @return self
      */
@@ -176,7 +176,7 @@ class Articles
     }
 
     /**
-     * @return string|null
+     * @return string
      */
     public function getTags()
     {
@@ -184,7 +184,7 @@ class Articles
     }
 
     /**
-     * @param string|null $tags
+     * @param string $tags
      *
      * @return self
      */
@@ -196,7 +196,7 @@ class Articles
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getCreated()
     {
@@ -204,7 +204,7 @@ class Articles
     }
 
     /**
-     * @param \DateTime|null $created
+     * @param \DateTime $created
      *
      * @return self
      */
@@ -216,7 +216,7 @@ class Articles
     }
 
     /**
-     * @return \DateTime|null
+     * @return \DateTime
      */
     public function getModified()
     {
@@ -224,7 +224,7 @@ class Articles
     }
 
     /**
-     * @param \DateTime|null $modified
+     * @param \DateTime $modified
      *
      * @return self
      */
