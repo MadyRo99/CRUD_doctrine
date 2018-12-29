@@ -18,7 +18,7 @@
     	<div class="col"></div>
     		<div class="col-8">
 			<?php
-				if (isset($_SESSION['id'])) {
+				if (isset($_SESSION['uid'])) {
 			?>
 			<a class="btn btn-primary" href="process/logout_process.php">Log Out</a><br><br>
 			<a class="btn btn-primary" href="articole_add.php">Adauga articol</a><br><br>
@@ -76,14 +76,14 @@
 						<p style='color: red; font-weight: 600; text-decoration: underline;'>".$categorie_article."</p>
 						<p style='text-indent: 50px;'>".$article->getText()."</p>
 						<p style='font-weight: 650;'><span style='color: red;'>Tags: </span>".$article->getTags()."</p>";
-						if (isset($_SESSION['id']) && $_SESSION['id'] == $article->getUidUser())
+						if (isset($_SESSION['uid']) && $_SESSION['uid'] == $article->getUidUser())
 						echo "
-						<a href='articole_edit' style='float: left; margin-right: 10px;' class='btn btn-info'>Editeaza</a>
-						<form action='process/articole_delete_process.php' method='GET'>
+						<a class='btn btn-info' href='articole_edit.php?uid_article=".$article->getUidArticles()."' style='float: left; color: white;'>Editeaza</a>
+						<form style='float: left; margin-left: 10px;' action='process/articole_delete_process.php' method='GET' >
 							<input class='btn btn-danger' type='submit' name='delete' value='Sterge'>
-							<input type='hidden' name='uid_article' value=".$article->getIdArticles().">
+							<input type='hidden' name='uid_article' value=".$article->getUidArticles().">
 						</form>
-						<div style='float: both'></div>
+						<div class='clearfix'></div>
 					";
 				}
 			?>
