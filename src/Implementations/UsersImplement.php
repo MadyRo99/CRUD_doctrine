@@ -9,7 +9,7 @@ class UsersImplement
 		$this->em = Database::getConnection();
 	}
 
-    public function Register ($data, $type = 0, $status = 0) 
+    public function register ($data, $type = 0, $status = 0) 
     {
     	$userRepository = $this->em->getRepository('Users');
         $mandatory_fields = array("name", "username", "email", "password");
@@ -41,7 +41,9 @@ class UsersImplement
 
         if ($valid) {
             $created = new \DateTime();
+            $last_login = new \DateTime();
             $user = new Users();
+            $user->setUidUsers($data['uid_user']);
             $user->setName($data['name']);
             $user->setEmail($data['email']);
             $user->setUsername($data['username']);
@@ -49,6 +51,7 @@ class UsersImplement
             $user->setStatus($status);
             $user->setType($type);
             $user->setCreated($created);
+            $user->setLastLogin($last_login);
             $this->em->persist($user);
             $this->em->flush();
             $result['result'] = 'true';
@@ -58,19 +61,22 @@ class UsersImplement
         return $result;
     }
 
-    public function Login ($data) {
+    public function login ($data) {
     	$userRepository = $this->em->getRepository('Users');
     	$user = $userRepository->findOneBy(array('username' => $data['usem']));
     	if ($user) {
     		if ($user->getPassword() == sha1($data['password'])) {
-    			$_SESSION['id'] = $user->getIdUsers();
+                $last_login = new \DateTime();
+                $user->setLastLogin($last_login);
+                $this->em->flush();
+    			$_SESSION['uid'] = $user->getUidUsers();
 		        $_SESSION['name'] = $user->getName();
 		        $_SESSION['username'] = $user->getUsername();
 		        $_SESSION['email'] = $user->getEmail();
 		        $_SESSION['status'] = $user->getStatus();
 		        $_SESSION['type'] = $user->getType();
 		        $_SESSION['created'] = $user->getCreated();
-		        $_SESSION['last_login'] = $user->getLastLogin();
+		        $_SESSION['last_login'] = $last_login;
 		        return 2;
     		} else {
     			return 1;
@@ -79,20 +85,31 @@ class UsersImplement
     	$user = $userRepository->findOneBy(array('email' => $data['usem']));
     	if ($user) {
     		if ($user->getPassword() == sha1($data['password'])) {
-    			$_SESSION['id'] = $user->getIdUsers();
+                $last_login = new \DateTime();
+                $user->setLastLogin($last_login);
+                $this->em->flush();
+    			$_SESSION['uid'] = $user->getUidUsers();
 		        $_SESSION['name'] = $user->getName();
 		        $_SESSION['username'] = $user->getUsername();
 		        $_SESSION['email'] = $user->getEmail();
 		        $_SESSION['status'] = $user->getStatus();
 		        $_SESSION['type'] = $user->getType();
 		        $_SESSION['created'] = $user->getCreated();
-		        $_SESSION['last_login'] = $user->getLastLogin();
+		        $_SESSION['last_login'] = $last_login;
 		        return 2;
     		} else {
     			return 1;
     		}
     	}
     	return 0;
+    }
+
+    public function check_uid($uid)
+    {
+        $userRepository = $this->em->getRepository('Users');
+        $user = $userRepository->findOneBy(array('uidUsers' => $uid));
+        if ($user) return true;
+        return false;
     }
 
 }
