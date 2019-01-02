@@ -85,7 +85,14 @@ class ArticlesImplement
             $result['result'] = 'false';
         }
         return $result;
-    } 
+    }
+
+    public function searchArticles($search)
+    {
+        $articleRepository = $this->em->getRepository('Articles');
+        $articles = $articleRepository->search($search);
+        return $articles;
+    }
 
     public function deleteArticle($uid_article)
     {

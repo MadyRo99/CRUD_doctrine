@@ -22,9 +22,9 @@
 			?>
 			<a class="btn btn-primary" href="process/logout_process.php">Log Out</a><br><br>
 			<a class="btn btn-primary" href="articole_add.php">Adauga articol</a><br><br>
-			<form class="form-inline" style="width: 100%;">
+			<form action="process/articole_search_process.php" method="GET" class="form-inline" style="width: 100%;">
 			  <div class="form-group" style="width: 90%;">
-			    <input style="width: 99%;" type="text" class="form-control" placeholder="Cauta cuvinte cheie...">
+			    <input style="width: 99%;" type="text" name="search" class="form-control" placeholder="Cauta articole...">
 			  </div>
 			  <button type="submit" class="btn btn-info">Cauta</button>
 			</form>
