@@ -1,74 +1,87 @@
 <?php
+
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Articles
  *
- * @ORM\Entity
- * @ORM\Table (name="articles")
+ * @ORM\Table(name="articles")
+ * @ORM\Entity(repositoryClass="ArticlesRepository")
  */
 class Articles
 {
-	/**
-	 * @ORM\Id
-	 * @ORM\Column (name="id_articles", type="integer", nullable=false, unique=true)
-	 * @ORM\GeneratedValue
-	 * @var integer
-	 */
-	private $idArticles;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_articles", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idArticles;
 
-	/**
-	 * @ORM\Column (name="uid_articles", type="integer", nullable=false, unique=true)
-	 * @var integer
-	 */
-	private $uidArticles;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="uid_articles", type="integer", nullable=false)
+     */
+    private $uidArticles;
 
-	/**
-	 * @ORM\Column (name="uid_user", type="integer", nullable=false)
-	 * @var integer
-	 */
-	private $uidUser;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="uid_user", type="integer", nullable=false)
+     */
+    private $uidUser;
 
-	/**
-	 * @ORM\Column (name="title", type="string", nullable=false)
-	 * @var string
-	 */
-	private $title;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="title", type="string", length=150, nullable=false)
+     */
+    private $title;
 
-	/**
-	 * @ORM\Column (name="category", type="integer", nullable=false)
-	 * @var integer
-	 */
-	private $category;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="category", type="integer", nullable=false)
+     */
+    private $category;
 
-	/**
-	 * @ORM\Column (name="text", type="text", nullable=false)
-	 * @var string
-	 */
-	private $text;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="text", type="text", length=0, nullable=false)
+     */
+    private $text;
 
-	/**
-	 * @ORM\Column (name="tags", type="string", nullable=false)
-	 * @var string
-	 */
-	private $tags;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="tags", type="string", length=255, nullable=false)
+     */
+    private $tags;
 
-	/**
-	 * @ORM\Column (name="created", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
-	 * @var \DateTime
-	 */
-	private $created = 'CURRENT_TIMESTAMP';
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
+     */
+    private $created;
 
-	/**
-	 * @ORM\Column (name="modified", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
-	 * @var \DateTime
-	 */
-	private $modified = 'CURRENT_TIMESTAMP';
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="modified", type="datetime", nullable=false)
+     */
+    private $modified;
 
 
 
     /**
-     * @return integer
+     * Get idArticles.
+     *
+     * @return int
      */
     public function getIdArticles()
     {
@@ -76,17 +89,11 @@ class Articles
     }
 
     /**
-     * @return integer
-     */
-    public function getUidArticles()
-    {
-        return $this->uidArticles;
-    }
-
-    /**
-     * @param integer $uidArticles
+     * Set uidArticles.
      *
-     * @return self
+     * @param int $uidArticles
+     *
+     * @return Articles
      */
     public function setUidArticles($uidArticles)
     {
@@ -96,17 +103,21 @@ class Articles
     }
 
     /**
-     * @return integer
+     * Get uidArticles.
+     *
+     * @return int
      */
-    public function getUidUser()
+    public function getUidArticles()
     {
-        return $this->uidUser;
+        return $this->uidArticles;
     }
 
     /**
-     * @param integer $uidUser
+     * Set uidUser.
      *
-     * @return self
+     * @param int $uidUser
+     *
+     * @return Articles
      */
     public function setUidUser($uidUser)
     {
@@ -116,17 +127,21 @@ class Articles
     }
 
     /**
-     * @return string
+     * Get uidUser.
+     *
+     * @return int
      */
-    public function getTitle()
+    public function getUidUser()
     {
-        return $this->title;
+        return $this->uidUser;
     }
 
     /**
+     * Set title.
+     *
      * @param string $title
      *
-     * @return self
+     * @return Articles
      */
     public function setTitle($title)
     {
@@ -136,17 +151,21 @@ class Articles
     }
 
     /**
-     * @return integer
+     * Get title.
+     *
+     * @return string
      */
-    public function getCategory()
+    public function getTitle()
     {
-        return $this->category;
+        return $this->title;
     }
 
     /**
-     * @param integer $category
+     * Set category.
      *
-     * @return self
+     * @param int $category
+     *
+     * @return Articles
      */
     public function setCategory($category)
     {
@@ -156,17 +175,21 @@ class Articles
     }
 
     /**
-     * @return string
+     * Get category.
+     *
+     * @return int
      */
-    public function getText()
+    public function getCategory()
     {
-        return $this->text;
+        return $this->category;
     }
 
     /**
+     * Set text.
+     *
      * @param string $text
      *
-     * @return self
+     * @return Articles
      */
     public function setText($text)
     {
@@ -176,17 +199,21 @@ class Articles
     }
 
     /**
+     * Get text.
+     *
      * @return string
      */
-    public function getTags()
+    public function getText()
     {
-        return $this->tags;
+        return $this->text;
     }
 
     /**
+     * Set tags.
+     *
      * @param string $tags
      *
-     * @return self
+     * @return Articles
      */
     public function setTags($tags)
     {
@@ -196,17 +223,21 @@ class Articles
     }
 
     /**
-     * @return \DateTime
+     * Get tags.
+     *
+     * @return string
      */
-    public function getCreated()
+    public function getTags()
     {
-        return $this->created;
+        return $this->tags;
     }
 
     /**
+     * Set created.
+     *
      * @param \DateTime $created
      *
-     * @return self
+     * @return Articles
      */
     public function setCreated($created)
     {
@@ -216,22 +247,36 @@ class Articles
     }
 
     /**
+     * Get created.
+     *
      * @return \DateTime
      */
-    public function getModified()
+    public function getCreated()
     {
-        return $this->modified;
+        return $this->created;
     }
 
     /**
+     * Set modified.
+     *
      * @param \DateTime $modified
      *
-     * @return self
+     * @return Articles
      */
     public function setModified($modified)
     {
         $this->modified = $modified;
 
         return $this;
+    }
+
+    /**
+     * Get modified.
+     *
+     * @return \DateTime
+     */
+    public function getModified()
+    {
+        return $this->modified;
     }
 }

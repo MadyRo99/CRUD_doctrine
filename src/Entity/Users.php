@@ -1,80 +1,95 @@
 <?php
+
+
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Users
- * 
+ *
+ * @ORM\Table(name="users")
  * @ORM\Entity
- * @ORM\Table (name="users")
  */
 class Users
 {
-	/**
-	 * @ORM\Id
-	 * @ORM\Column (name="id_users", type="integer", nullable=false, unique=true)
-	 * @ORM\GeneratedValue
-	 * @var integer
-	 */
-	private $idUsers;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_users", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idUsers;
 
-	/**
-	 * @ORM\Column (name="uid_users", type="integer", nullable=false, unique=true)
-	 * @var integer
-	 */
-	private $uidUsers;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="uid_users", type="integer", nullable=false)
+     */
+    private $uidUsers;
 
-	/**
-	 * @ORM\Column (name="name", type="string", length=60, nullable=false)
-	 * @var string
-	 */
-	private $name;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=60, nullable=false)
+     */
+    private $name;
 
-	/**
-	 * @ORM\Column (name="username", type="string", length=60, nullable=false, unique=true)
-	 * @var string
-	 */
-	private $username;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="username", type="string", length=60, nullable=false)
+     */
+    private $username;
 
-	/**
-	 * @ORM\Column (name="email", type="string", length=100, nullable=false, unique=true)
-	 * @var string
-	 */
-	private $email;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="email", type="string", length=100, nullable=false)
+     */
+    private $email;
 
-	/**
-	 * @ORM\Column (name="password", type="string", length=150, nullable=false)
-	 * @var string
-	 */
-	private $password;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="password", type="string", length=150, nullable=false)
+     */
+    private $password;
 
-	/**
-	 * @ORM\Column (name="status", type="string", length=15, nullable=false, options={"comment"="0-INITIAL; 1-APPROVED"})
-	 * @var string
-	 */
-	private $status = '0';
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="status", type="integer", nullable=false)
+     */
+    private $status;
 
-	/**
-	 * @ORM\Column (name="type", type="integer", nullable=false, options={"comment"="0-USER; 1-ADMINISTRATOR"})
-	 * @var integer
-	 */
-	private $type = '0';
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="type", type="integer", nullable=false)
+     */
+    private $type;
 
-	/**
-	 * @ORM\Column (name="created", type="datetime", nullable=false, options={"default"="CURRENT_TIMESTAMP"})
-	 * @var \DateTime
-	 */
-	private $created = 'CURRENT_TIMESTAMP';
-	
-	/**
-	 * @ORM\Column (name="last_login", type="datetime", nullable=false)
-	 * @var \DateTime
-	 */
-	private $lastLogin;
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="created", type="datetime", nullable=false)
+     */
+    private $created;
+
+    /**
+     * @var \DateTime
+     *
+     * @ORM\Column(name="last_login", type="datetime", nullable=false)
+     */
+    private $lastLogin;
 
 
 
     /**
-     * @return integer
+     * Get idUsers.
+     *
+     * @return int
      */
     public function getIdUsers()
     {
@@ -82,17 +97,11 @@ class Users
     }
 
     /**
-     * @return integer
-     */
-    public function getUidUsers()
-    {
-        return $this->uidUsers;
-    }
-
-    /**
-     * @param integer $uidUsers
+     * Set uidUsers.
      *
-     * @return self
+     * @param int $uidUsers
+     *
+     * @return Users
      */
     public function setUidUsers($uidUsers)
     {
@@ -102,17 +111,21 @@ class Users
     }
 
     /**
-     * @return string
+     * Get uidUsers.
+     *
+     * @return int
      */
-    public function getName()
+    public function getUidUsers()
     {
-        return $this->name;
+        return $this->uidUsers;
     }
 
     /**
+     * Set name.
+     *
      * @param string $name
      *
-     * @return self
+     * @return Users
      */
     public function setName($name)
     {
@@ -122,17 +135,21 @@ class Users
     }
 
     /**
+     * Get name.
+     *
      * @return string
      */
-    public function getUsername()
+    public function getName()
     {
-        return $this->username;
+        return $this->name;
     }
 
     /**
+     * Set username.
+     *
      * @param string $username
      *
-     * @return self
+     * @return Users
      */
     public function setUsername($username)
     {
@@ -142,17 +159,21 @@ class Users
     }
 
     /**
+     * Get username.
+     *
      * @return string
      */
-    public function getEmail()
+    public function getUsername()
     {
-        return $this->email;
+        return $this->username;
     }
 
     /**
+     * Set email.
+     *
      * @param string $email
      *
-     * @return self
+     * @return Users
      */
     public function setEmail($email)
     {
@@ -162,17 +183,21 @@ class Users
     }
 
     /**
+     * Get email.
+     *
      * @return string
      */
-    public function getPassword()
+    public function getEmail()
     {
-        return $this->password;
+        return $this->email;
     }
 
     /**
+     * Set password.
+     *
      * @param string $password
      *
-     * @return self
+     * @return Users
      */
     public function setPassword($password)
     {
@@ -182,17 +207,21 @@ class Users
     }
 
     /**
+     * Get password.
+     *
      * @return string
      */
-    public function getStatus()
+    public function getPassword()
     {
-        return $this->status;
+        return $this->password;
     }
 
     /**
-     * @param string $status
+     * Set status.
      *
-     * @return self
+     * @param int $status
+     *
+     * @return Users
      */
     public function setStatus($status)
     {
@@ -202,17 +231,21 @@ class Users
     }
 
     /**
-     * @return integer
+     * Get status.
+     *
+     * @return int
      */
-    public function getType()
+    public function getStatus()
     {
-        return $this->type;
+        return $this->status;
     }
 
     /**
-     * @param integer $type
+     * Set type.
      *
-     * @return self
+     * @param int $type
+     *
+     * @return Users
      */
     public function setType($type)
     {
@@ -222,17 +255,21 @@ class Users
     }
 
     /**
-     * @return \DateTime
+     * Get type.
+     *
+     * @return int
      */
-    public function getCreated()
+    public function getType()
     {
-        return $this->created;
+        return $this->type;
     }
 
     /**
+     * Set created.
+     *
      * @param \DateTime $created
      *
-     * @return self
+     * @return Users
      */
     public function setCreated($created)
     {
@@ -242,22 +279,36 @@ class Users
     }
 
     /**
+     * Get created.
+     *
      * @return \DateTime
      */
-    public function getLastLogin()
+    public function getCreated()
     {
-        return $this->lastLogin;
+        return $this->created;
     }
 
     /**
+     * Set lastLogin.
+     *
      * @param \DateTime $lastLogin
      *
-     * @return self
+     * @return Users
      */
     public function setLastLogin($lastLogin)
     {
         $this->lastLogin = $lastLogin;
 
         return $this;
+    }
+
+    /**
+     * Get lastLogin.
+     *
+     * @return \DateTime
+     */
+    public function getLastLogin()
+    {
+        return $this->lastLogin;
     }
 }

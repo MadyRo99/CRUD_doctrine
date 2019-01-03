@@ -1,38 +1,46 @@
 <?php
+
+
+
 use Doctrine\ORM\Mapping as ORM;
 
 /**
  * Categories
  *
+ * @ORM\Table(name="categories")
  * @ORM\Entity
- * @ORM\Table (name="categories")
  */
 class Categories
 {
-	/**
-	 * @ORM\Id
-	 * @ORM\Column (name="id_categories", type="integer", nullable=false, unique=true)
-	 * @ORM\GeneratedValue
-	 * @var integer
-	 */
-	private $idCategories;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="id_categories", type="integer", nullable=false)
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="IDENTITY")
+     */
+    private $idCategories;
 
-	/**
-	 * @ORM\Column (name="name", type="string", nullable=false, unique=true)
-	 * @var string
-	 */
-	private $name;
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="name", type="string", length=45, nullable=false)
+     */
+    private $name;
 
-	/**
-	 * @ORM\Column (name="count_articles", type="integer", nullable=true, options={"default"=0})
-	 * @var integer|null
-	 */
-	private $countArticles;
+    /**
+     * @var int
+     *
+     * @ORM\Column(name="count_articles", type="integer", nullable=false)
+     */
+    private $countArticles = '0';
 
 
 
     /**
-     * @return integer
+     * Get idCategories.
+     *
+     * @return int
      */
     public function getIdCategories()
     {
@@ -40,17 +48,11 @@ class Categories
     }
 
     /**
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->name;
-    }
-
-    /**
+     * Set name.
+     *
      * @param string $name
      *
-     * @return self
+     * @return Categories
      */
     public function setName($name)
     {
@@ -60,7 +62,33 @@ class Categories
     }
 
     /**
-     * @return integer|null
+     * Get name.
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set countArticles.
+     *
+     * @param int $countArticles
+     *
+     * @return Categories
+     */
+    public function setCountArticles($countArticles)
+    {
+        $this->countArticles = $countArticles;
+
+        return $this;
+    }
+
+    /**
+     * Get countArticles.
+     *
+     * @return int
      */
     public function getCountArticles()
     {
