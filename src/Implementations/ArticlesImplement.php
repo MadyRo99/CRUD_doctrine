@@ -90,7 +90,7 @@ class ArticlesImplement
     public function searchArticles($search)
     {
         $articleRepository = $this->em->getRepository('Articles');
-        $articles = $articleRepository->search($search);
+        $articles = $this->search($search);
         return $articles;
     }
 
@@ -117,5 +117,14 @@ class ArticlesImplement
         $article = $articleRepository->findOneBy(array('uidArticles' => $uid));
         if ($article) return true;
         return false;
+    }
+
+    private function search($search)
+    {
+        $dql = 'SELECT a FROM Articles a WHERE a.tags LIKE ?1 OR a.title LIKE ?2';
+        $query = $this->em->createQuery($dql);
+        $query->setParameter(1, '%'.$search.'%');
+        $query->setParameter(2, '%'.$search.'%');
+        return $query->getArrayResult();
     }
 }
